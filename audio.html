@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>h5 音频测试</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<!--<audio controls >
+			<source src="src/m1.mp3">
+			http://win.web.nf03.sycdn.kuwo.cn/46e7856ecd2d0fc1ea02bbb32f5c1876/5abccce2/resource/a2/51/80/3992077121.aac
+		</audio>-->
+		<audio preload id="player" src="http://192.168.30.71/voice/20180403/3394d4af202b45d2b19ddf55473e64e8.wav" controls></audio>
+		<hr />
+		<div class="">
+			<input type="button" value="play" id="audioBtn"/>
+			<span id="curtime">0</span>/<span id="duration">0</span>
+		</div>
+		<button id="minusSpeed">速度减倍</button><button id="addSpeed">速度增倍</button>
+		<button id="backword"><<</button>
+		<button id="forword">>></button>
+		<script type="text/javascript">
+			var player = document.getElementById("player"),
+				btn = document.getElementById("audioBtn"),
+				curtime = document.getElementById("curtime"),
+				duration = document.getElementById("duration");
+				duration.innerHTML = player.duration;
+				
+				player.addEventListener('play',function(){
+					console.log('play');
+//					$('audio').not(this).each(function(){
+//						this.pause();
+//					})
+//					this.play();
+				})
+				player.addEventListener('pause',function(){
+					console.log('pause');
+				})
+				player.addEventListener('playing',function(){
+					console.log('playing');
+				})
+				
+				player.addEventListener('canplay',function(){
+					duration.innerHTML = secToMin(player.duration.toFixed(0));
+				})
+				
+				player.addEventListener('canplaythrough',function(){
+					
+				})
+				btn.addEventListener('click',function(){
+					if(player.paused){
+						player.play();
+						btn.value = "Pause";
+					}else {
+						player.pause();
+						btn.value = "Play"
+					}
+				})
+				setInterval(function(){
+					curtime.innerHTML = secToMin(player.currentTime.toFixed(0));
+				},250)
+				function secToMin(t){
+					return Math.floor(t/60)+":"+(t%60/100).toFixed(2).slice(-2);
+				}
+				//快进快退
+				document.getElementById("backword").addEventListener('click',function(){
+					console.log(player.currentTime)
+					player.currentTime = player.currentTime-0.5; 
+				})
+				document.getElementById("forword").addEventListener('click',function(){
+					player.currentTime = player.currentTime+0.5; 
+					console.log(player.currentTime)
+				})
+				//控制播放
+				document.getElementById("minusSpeed").addEventListener('mousedown',function(){
+					player.playbackRate = 0.5*player.playbackRate; 
+				})
+				document.getElementById("addSpeed").addEventListener('mousedown',function(){
+					player.playbackRate = 2*player.playbackRate; 
+				})
+		</script>
+	</body>
+</html>

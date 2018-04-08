@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>各种居中</title>
+		<style type="text/css">
+			body * {
+				border: 1px solid;
+			}
+			.text-center {
+				text-align: center;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div class="text-center">
+			单行文字居中1
+		</div>
+		<div class="text-center" style="width: 200px;height: 200px; line-height: 200px;">
+			单行文字居中2
+		</div>
+		<div class="text-center">
+			多行文字居中1</br>
+			多行文字居中1</br>
+			多行文字居中1</br>
+			多行文字居中1
+		</div>
+		<div class="text-center" style="width: 200px;height: 200px;">
+			<span id="" style="line-height: 200px;border: none;">
+			</span>
+			<span style="display: inline-block;vertical-align: middle;">
+				多行文字居中2</br>
+				多行文字居中2</br>
+				多行文字居中2</br>
+				多行文字居中2
+			</span>
+		</div>
+		<div style="display: table;width: 200px;height: 200px;">
+			<div class="text-center" style="display: table-cell; vertical-align:middle;">
+				多行文字居中3</br>
+				多行文字居中3</br>
+				多行文字居中3</br>
+				多行文字居中3
+			</div>
+		</div>
+		<div style="width: 200px;height: 200px;border: 1px solid;position: relative;">
+			<div style="width: 100px;height: 100px;border: 2px solid;margin: auto;position: absolute;left: 0;right: 0;top: 0;bottom: 0;">
+				div内div居中1
+			</div>
+		</div>
+		<div style="width: 200px;height: 200px;border: 1px solid;display:table-cell;
+            vertical-align:middle;text-align: center;">
+			<div style="width: 100px;height: 100px;border: 2px solid; display:inline-block;">
+				div内div居中2
+			</div>
+		</div>
+		<div style="">
+			<div style="">
+				float之后居中
+			</div>
+		</div>
+	</body>
+</html>

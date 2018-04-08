@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>css实现三角、梯形等</title>
+		<style type="text/css">
+			.box {
+				/*正方形*/
+				width: 20px;
+				height: 20px;
+				background-color: blue;
+				/*花哨正方形*/
+				border-top: 50px solid red;
+				border-right: 50px solid yellow;
+				border-bottom: 50px solid green;
+				border-left: 50px solid pink;
+				/*将宽高设为0*/
+				width: 0;
+				height: 0;
+				/*将三条边设为透明则可以获取一个三角形*/
+				background-color: transparent;
+				border-top: 50px solid transparent;
+				border-right: 50px solid transparent;
+				border-bottom: 50px solid transparent;
+				
+			}
+			
+			.box1, .box3 {
+				width: 0;
+				height: 0;
+				border-top: 50px solid transparent;
+				border-right: 50px solid transparent;
+				border-bottom: 50px solid green;
+				border-left: 50px solid transparent;
+			}
+			.box2 {
+				width: 50px;
+				height: 50px;
+				background-color: green;
+			}
+			.box1 {
+				transform: translate(54px, 0px);
+			}
+			.box3 {
+				transform: translate(-54px, 0px);
+			}
+			.box1, .box2, .box3 {
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			
+		</div>
+		<!--梯形-->
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>缩放自适应测试</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<style type="text/css">
+			html {
+				font-size: 100px; 
+			}
+			.wrapper {
+				width: 1920px;
+				height: 1080px;
+				background: url(img/welcome.png);
+				overflow: auto;
+			}
+		</style>
+		<script type="text/javascript">
+			var phoneWidth = parseInt(window.screen.width);
+			var phoneScale = phoneWidth / 1920;
+			document.write('<meta name="viewport" content="width=640, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+		</script>
+	</head>
+	<body>
+		<div id="" class="wrapper">
+			
+		</div>
+	</body>
+</html>

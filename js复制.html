@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js控制复制面板</title>
+	</head>
+	<body>
+		<input id="copy" type="text" value="www.baidu.com" />
+		<button id="btn">复制链接</button>
+		<script type="text/javascript">
+			document.getElementById("btn").addEventListener('click',function(){
+				copyLink();
+			})
+			function copyLink() {
+				var e = document.getElementById("copy");
+				e.select();//选择对象
+				document.execCommand('Copy');
+				alert('成功')
+			}
+		</script>
+	</body>
+</html>

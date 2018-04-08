@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				background: rgba(0,0,0, .6);
+				color: white;
+				text-align: center;
+			}
+			.item1 {
+				float: right;
+			}
+			.item1:after {
+				content: "\0020";
+				display: block;
+				height: 0;
+				clear: both;
+			}
+			/*p {
+				margin: 0;
+			}*/
+		</style>
+	</head>
+	<body style="overflow: hidden;">
+		<div id="" class="container">
+			<div class="item1">
+				<p>item1</p>
+				
+			</div>
+			
+			<div class="item2"><p>item2</p></div>
+			<div class="item3"><p>item3</p></div>
+			<div class="item4"><p>item4</p></div>
+			<div class="item5"><p>item5</p></div>
+		</div>
+	</body>
+</html>

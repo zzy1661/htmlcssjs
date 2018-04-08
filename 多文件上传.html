@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>上传5张图片</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		
+	</head>
+	<body>
+		<p>
+			<button id="btn">上传图片</button>
+			<!--不使用multiple-->
+			<!--<input id="files" accept="image/png,image/gif,image/jpg,image/jpeg" style="display: none;" type="file" name="img" multiple />-->
+			<input id="files" accept="image/png,image/gif,image/jpg,image/jpeg" style="display: none;" type="file"/>
+			<span><var id="selected">0</var>/5</span>
+		</p>
+		<script type="text/javascript">
+			$('#btn').on('click',function(){
+				$('#files').click();
+			})
+			$('#files').on('change',function(){
+				var file = this.files[0];
+				
+			})
+		</script>
+	</body>
+</html>

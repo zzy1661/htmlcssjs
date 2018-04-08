@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>跨域session</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<button id="btn">get session id</button>
+		<p>
+			session id： <b id="sessionId"></b>
+		</p>
+		<!--[if IE 9]>
+			<script type="text/javascript">
+			console.log(!!window.XDomainRequest)
+			// Creates a new XDR object.
+			var xdr = new XDomainRequest();
+			/*
+			// Indicates there is an error and the request cannot be completed. 
+			xdr.onerror = alert_error;
+			// The request has reached its timeout. 
+			xdr.ontimeout = alert_timeout;
+			// The object has started returning data.
+			xdr.onprogress = alert_progress;
+			// The object is complete. 
+			xdr.onload = alert_loaded;
+			// Sets the timeout interval.
+			xdr.timeout = timeout;
+			// Gets the content-type header in the request.
+			var content_type = xdr.contentType;
+			// Gets the body of the response.
+			var response = xdr.responseText;
+			// Creates a connection with a domain's server. 
+			xdr.open("get", url);
+			// Transmits a data string to the server. 
+			xdr.send();
+			// Terminates a pending send.
+			xdr.abort();*/
+			xdr.onerror = function(){
+				console.log('xdr err');
+			}
+			xdr.onload = function(){
+				console.log(xdr.responseText)
+			};
+			xdr.open("get", 'http://localhost:8084/yjbpoint/toy/test');
+			xdr.send();
+		</script>
+		<![endif]-->
+		
+		<script type="text/javascript">
+			jQuery.support.cors = true;
+			$.ajaxSetup({
+				xhrFields: {
+					withCredentials: true
+				}
+			});
+			$('#btn').on('click', function() {
+				$.ajax({
+					url: 'http://localhost:8084/yjbpoint/toy/test',
+					async: true,
+					type: 'GET'
+				}).done(function(res) {
+					$('#sessionId').html(res);
+				}).fail(function(xhr, txt, err) {
+					console.log(txt, err)
+				}).always(function() {
+					console.log('xhr end')
+				})
+			})
+		</script>
+	</body>
+
+</html>

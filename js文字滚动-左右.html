@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.container {
+				width: 500px;
+				height: 30px;
+				background: #555555;
+				position: relative;
+				border: 1px solid;
+				border-radius: 15px;
+				overflow: hidden;
+				cursor: pointer;
+			}
+			.inner {
+				position: absolute;
+				white-space: nowrap;
+			}
+			
+		</style>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<div id="textWrapper" class="container">
+			<div id="textContent" class="inner">！！！我是滚动字幕：翩若惊鸿，婉若游龙。荣曜秋菊，华茂春松。仿佛兮若轻云之蔽月，飘摇兮若流风之回雪。</div>
+		</div>
+		<script type="text/javascript">
+			var left = 0;
+			var containerWidth = $('#textWrapper')[0].offsetWidth;
+			var textWidth = $('#textContent')[0].offsetWidth;
+			console.log(containerWidth,textWidth);
+			var intervalId;
+			intervalId = scrollText();
+			$('#textWrapper').hover(function(){
+				clearInterval(intervalId);
+			},function(){
+				intervalId = scrollText();
+			});
+			function scrollText() {
+				var intervalId = setInterval(function(){
+					var left = parseInt($('#textContent').css('left'));
+					left = left?left-10 : -10;//兼容ie
+					if(-left>textWidth){
+						left = containerWidth
+					}
+					$('#textContent').css('left',left+'px');
+				},150);
+				return intervalId;
+			}
+		</script>
+	</body>
+</html>

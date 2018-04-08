@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>机器人管理登录页面的动画</title>
+		<style>
+			@keyframes perspectiveAnimate{
+				0% {
+					perspective: 150;
+					-webkit-perspective: 150;
+				}
+				50% {
+					perspective: 500;
+					-webkit-perspective: 500;
+				}
+				100% {
+					perspective: 250;
+					-webkit-perspective: 250;
+				}
+			}
+			@keyframes cc{
+				0% {
+					opacity: 0.4;
+					transform: scale(0.1);
+					top: -500px;
+				}
+				50% {
+					opacity: 0.4;
+					transform: scale(0.1) rotateX(90deg);
+					top: -50px;
+				}
+				100% {
+					opacity: 1;
+					transform: scale(1) rotateX(0deg);
+					top: 0;
+				}
+			}
+			#div1 {
+				position: relative;
+				height: 150px;
+				width: 150px;
+				margin: 50px;
+				padding: 10px;
+				border: 1px solid black;
+				perspective: 150;
+				-webkit-perspective: 150;
+				/* Safari and Chrome */
+				animation: perspectiveAnimate 2s ease-in-out;
+			}
+			
+			#div2 {
+				padding: 50px;
+				position: absolute;
+				border: 1px solid black;
+				background-color: yellow;
+				transform: rotateX(45deg);
+				-webkit-transform: rotateX(45deg);
+				/* Safari and Chrome */
+			}
+			.wrap {
+				height: 250px;
+				width: 250px;
+				border: 1px solid;
+				perspective: 500px;
+				-webkit-perspective: 500px;
+			}
+			.login {
+				position: relative;
+				width: 200px;
+				height: 200px;
+				background: red;
+				margin: 0 auto;
+				animation: cc 4s ease-in-out ;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="div1">
+			<div id="div2">perspective效果</div>
+		</div>
+		<hr />
+		<div class="wrap">
+			<div class="login">机器人登录页的动画</div>
+		</div>
+	</body>
+
+</html>

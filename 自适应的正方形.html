@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!--<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />-->
+		<title>自适应的正方形</title>
+		<style type="text/css">
+			.placeholder1 {
+			  	width: 10vw;
+			  	height: 10vw;
+			  	background: yellow;
+			}
+			.placeholder2 {
+			  	width: 10%;
+  				padding-bottom: 10%;
+  				background: yellow;
+  				box-sizing: content-box;
+			}
+			.placeholder3 {
+			  width: 10%;
+			  background: yellow;
+			  overflow: hidden;
+			}
+			
+			.placeholder3:after {
+			  content: '';
+			  display: block;
+			  margin-top: 100%; /* margin 百分比相对父元素宽度计算 */
+			}
+		</style>
+	</head>
+	<body >
+		<div class="placeholder1"></div>  
+		<hr />
+		<div class="placeholder2"></div> 
+		<hr />
+		<div class="placeholder3"></div> 
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>获取文件内容-测试可用</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<style type="text/css">
+			img {
+				width: 100px;
+				height: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="file"  id="file"/>
+		<img id="img1" src=""/>
+		<img src="" id="img2"/>
+		<script type="text/javascript">
+				$('#file').on('change',function(){
+					console.log(this.value);
+					var file = this.files[0];
+					//window url 方案
+					var windowURL = window.URL || window.webkitURL;  
+					dataURL = windowURL.createObjectURL(file); 
+					console.log(dataURL)
+					$('#img1')[0].src = dataURL;
+					//filereader 方案
+					if(window.FileReader){
+						var reader = new FileReader();
+						reader.onloadend = function (e) {
+							console.log(e.target.result);
+							console.log(this);
+							console.log(e);
+							$('#img2')[0].src = this.result;
+			            };   
+						reader.readAsDataURL(file);
+					}
+				})
+		</script>
+	</body>
+</html>

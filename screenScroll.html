@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>屏幕滚动</title>
+		<style type="text/css">
+			.container {
+				position: relative;
+				height: 500px;
+				width: 640px;
+				border: 2px solid;
+				overflow: hidden;
+			}
+			.content {
+				position: absolute;
+				top: 0px;
+				width: 640px;
+				height: 2000px;
+				background-color: #0000FF;
+			}
+			li:nth-child(even) {
+				height: 50px;
+				background: #ccc;
+			}
+			li:nth-child(odd) {
+				height: 50px;
+				background: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="content">
+				<ol>
+					<li>修改top可以模拟屏幕滚动</li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ol>
+			</div>
+		</div>
+	</body>
+</html>

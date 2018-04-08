@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>float影响及消除</title>
+		<style type="text/css">
+			.fix:after{display:block; content:'clear'; clear:both; line-height:0; visibility:hidden;}
+		</style>
+	</head>
+	<body>
+		<!--1.浮动的包裹性-->
+		<div style="background: red;float: right;">这是一个div，float增加了包裹性，如同inline-block</div>
+		<!--2.浮动的破坏性-->
+		<p>正常模式：这是一行普通的文字，这里有个 <em>em</em> 标签，还有个<img width="100" height="100" src="img/robotbg.jpg" alt="img" />图片，</br>这是第二行</p>
+		<!--破坏了img的line box，导致img没有了高度-->
+		<p>浮动影响：这是一行普通的文字，这里有个 <em>em</em> 标签，还有个<img style="float: left;" width="100" height="100" src="img/robotbg.jpg" alt="img" />图片，
+		</br>这是第二行</br>这是第三行</br>这是第四行</br>这是第五行</p>
+		<!--3.浮动造成的高度塌陷-->
+		<div style="background: green;margin-bottom: 20px; border: 4px solid;"><div style="background：red;">正常情况</div></div>
+		<div style="background: green;margin-bottom: 20px; border: 4px solid;"><div style="background: red;float: left;">浮动情况</div></div>
+		<!--4.清除浮动造成的高度塌陷-->
+		<div style="background: green;margin-bottom: 20px; border: 4px solid; overflow: auto;"><div style="background: red;float: left;">overflow清除浮动造成的高度塌陷</div></div>
+		<div style="background: green; border: 4px solid; overflow: auto;"><div class="fix" style="background: red;float: left;">after清除浮动造成的高度塌陷</div></div>	
+	</body>
+</html>

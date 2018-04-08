@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>错位布局</title>
+		<style type="text/css">
+			p {
+				margin: 0;
+			}
+			.col {
+				position: relative;
+			}
+			.aside {
+				position: absolute;
+				top: 50%;
+				border-left: 1px solid;
+				border-top: 1px solid;
+				height: 100%;
+				width: 20px;
+				text-align: right;
+			}
+			.aside.last {
+				border-left: none;
+			}
+			.content {
+				/*height: 30px;*/
+				margin-left: 30px;
+				border-bottom: 1px solid;
+			}
+			.dot {
+				display: inline-block;
+				width: 4px;
+				height: 4px;
+				border-radius: 50%;
+				background: black;
+				position: absolute;
+    			top: -2px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="col">
+			<div class="aside">
+				<span class="dot"></span>
+			</div>
+			<div id="" class="content">
+				<p>23123213</p>
+				<p>水电费 sf 是的反复</p>
+			</div>
+		</div>
+		<div class="col">
+			<div class="aside">
+				<span class="dot"></span>
+			</div>
+			<div id="" class="content">
+				<p>23123213</p>
+				<p>水电费 sf 是的反复</p>
+			</div>
+		</div>
+		<div class="col">
+			<div class="aside">
+				<span class="dot"></span>
+			</div>
+			<div id="" class="content">
+				<p>23123213</p>
+				<p>水电费 sf 是的反复</p>
+			</div>
+		</div>
+		<div class="col">
+			<div class="aside last">
+				<span class="dot"></span>
+			</div>
+			<div id="" class="content">
+				<p>23123213</p>
+				<p>水电费 sf 是的反复</p>
+			</div>
+		</div>
+	</body>
+</html>

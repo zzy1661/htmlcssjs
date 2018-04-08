@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图片转base64</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<img id="img" src="img/img_chania.jpg"/>
+		<input type="file" name="file" id="file" value="" />
+		<!--这种方法对本地图片同样不可用-->
+		<!--<img id="img" src="file:///C:/Users/User/Pictures/835618907420705547.jpg" alt="" />-->
+		<img id="base64Img" src="" alt="" />
+		<img id="fileImg" src=""/>
+		<!--ie9支持canvas-->
+		<script type="text/javascript">
+			document.getElementById("file").addEventListener('change',function(){
+				var file = this.files[0];
+			})
+			document.getElementById("img").addEventListener('load',function(){
+				document.getElementById("base64Img").src=getBase64Image(document.getElementById("img"));	
+			})
+			function getBase64Image(img){
+				var canvas = document.createElement('canvas');
+				canvas.width = img.width;
+				canvas.height = img.height;
+				var ctx = canvas.getContext('2d');
+				ctx.drawImage(img,0,0,img.width,img.height);
+				var ext = img.src.substr(img.src.lastIndexOf('.')+1).toLowerCase();
+				var dataUrl = canvas.toDataURL('image/'+ext);
+				return dataUrl;
+			}
+			
+		</script>
+	</body>
+</html>

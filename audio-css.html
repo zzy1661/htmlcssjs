@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Audio Player: Responsive &amp; Touch-Friendly</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="description" content="Responsive &amp; Touch-Friendly Audio Player" />
+		<meta name="author" content="Osvaldas Valutis, www.osvaldas.info" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<!--<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:400,700" />-->
+		<!--<link rel="stylesheet" href="css/reset.css" />-->
+		<!--<link rel="stylesheet" href="css/demo.css" />-->
+		<link rel="stylesheet" href="css/audioplayer.css" />
+		<!--<script>
+			/*
+				VIEWPORT BUG FIX
+				iOS viewport scaling bug fix, by @mathias, @cheeaun and @jdalton
+			*/
+			(function(doc){var addEvent='addEventListener',type='gesturestart',qsa='querySelectorAll',scales=[1,1],meta=qsa in doc?doc[qsa]('meta[name=viewport]'):[];function fix(){meta.content='width=device-width,minimum-scale='+scales[0]+',maximum-scale='+scales[1];doc.removeEventListener(type,fix,true);}if((meta=meta[meta.length-1])&&addEvent in doc){fix();scales=[.25,1.6];doc[addEvent](type,fix,true);}}(document));
+		</script>-->
+	</head>
+	<body>
+		<!--<audio id="audio1" autoplay  controls>
+			<source src="http://192.168.30.71/voice/20180403/3394d4af202b45d2b19ddf55473e64e8.wav">
+		</audio>-->
+		<button id="btn">get audio</button>
+		<button id="btn2">get audio2</button>
+		<div id="audios">
+			
+		</div>
+		
+		<script src="js/jquery.js"></script>
+		<script src="js/audioplayer.js"></script>
+		<script type="text/javascript">
+			$('#btn').on('click',function(){
+				$('#audios').append(`<div class="wrapper">
+					<audio id="audio1" autoplay  controls>
+						<source src="http://192.168.30.71/voice/20180403/3394d4af202b45d2b19ddf55473e64e8.wav">
+//						<source src="audio/BlueDucks_FourFlossFiveSix.mp3">
+//						<source src="audio/BlueDucks_FourFlossFiveSix.ogg">
+//						<source src="audio/BlueDucks_FourFlossFiveSix.wav">
+					</audio>
+				</div>`)
+				$( '#audio1' ).audioPlayer({});
+			})
+			
+			$('#btn2').on('click',function(){
+				$('#audios').append(`<div class="wrapper">
+					<audio id="audio2"  controls>
+						<source src="http://192.168.30.71/voice/20180403/3394d4af202b45d2b19ddf55473e64e8.wav">
+//						<source src="audio/BlueDucks_FourFlossFiveSix.mp3">
+//						<source src="audio/BlueDucks_FourFlossFiveSix.ogg">
+//						<source src="audio/BlueDucks_FourFlossFiveSix.wav">
+					</audio>
+				</div>`)
+				$( '#audio2' ).audioPlayer({isPlay:true});
+			})
+		</script>
+	</body>
+</html>

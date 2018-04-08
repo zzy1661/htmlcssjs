@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ie上传文件，以图像为例</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<button id="btn">上传文件</button>
+		<input style="width: 1px;height: 1px;overflow: hidden;" type="file" name="file" id="file" value="" />
+		<h1>文件路径：<span id="filePath"></span></h1>
+		<h1>文件名：<span id="fileName"></span></h1>
+		<h1>文件对象：<span id="fileObj"></span></h1>
+		<img width="100" height="100" id="img" src="" alt="" />
+		<hr />
+		<h1>form 上传文件</h1>
+		<form enctype="multipart/form-data" method="post" action="http://localhost:8084/yjbpoint/file/formup" target="targ">
+			<input type="file" name="file" id="file2" value="" />
+			<input type="submit" />
+		</form>
+		<iframe id="targ" name="targ" ></iframe>
+		<script type="text/javascript">
+			var version = window.navigator.userAgent;  
+			console.log(version.substr(version.indexOf("MSIE") + 5, 1))//9
+			$('#btn').on('click',function(){
+				$('#file').click();
+			})
+			$('#file').on('change',function(){
+				console.log(this.value);
+				if(!this.files){//ie9
+					
+					//显示图片
+					this.select();  
+    				this.blur();
+    				//这种方法要求该控件可见
+    				var imgUrl = document.selection.createRange().text;
+    				console.log('select:'+imgUrl);
+    				//显示图像
+    				var img = document.getElementById("img");
+    				img.style.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale';
+    				img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src=imgUrl;
+					
+					//发送文件
+					$('#file').wrap('<form id="uploadForm"  method="post" action="http://localhost:8084/yjbpoint/file/formup" enctype="multipart/form-data" target="myiframe"></form>')
+					$('body').append('<iframe id="myiframe" name="myiframe" style="display: none;"> ')
+					$('#uploadForm')[0].submit();
+				}
+			})
+			
+				 
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p id="content"></p>
+		内容：<textarea name="" rows="" cols="">
+			<strong>aa</strong>
+			<em>11</em>
+		</textarea>
+		<p id="test">
+			<strong>aa</strong>
+			<em>11</em>
+		</p>
+		<button id="submit">提交</button>
+	</body>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$("#submit").on("click",function() {
+			$('#content').prepend($('#test').html());
+		})
+	</script>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		
+	</head>
+	<body>
+		上传网页
+		<input type="file" name="file" id="file" value="" style="display: none;"/>
+		<button id="up">up</button>
+		<hr />
+		<input type="file" name="files"  id="files" multiple=""/>
+		<script type="text/javascript">
+			//单文件
+			$('#file').on('change',function(){
+//				var url = "http://192.168.30.53:8080/ASRAgent/upload?customerId=1111";
+				var localUrl = "http://localhost:8085/upload?customerId=1111"
+				var formData = new FormData();  
+				 formData.append('file', $('#file')[0].files[0]);  
+				 formData.append('projectId', 1);  
+				 formData.append('msg', '单文件');  
+		        $.ajax({  
+		            url: 'http://localhost:8084/yjbpoint/file/singleup',  
+//					url: url,
+//					url: localUrl,
+		            type: 'POST',  
+		            cache: false,  
+		            data: formData,  
+		            processData: false,  
+		            contentType: false  
+		        }).done(function(res) {
+		        	console.log(res)
+		        }).fail(function(res,txt,err) {
+		        	console.log(err);
+		        });
+			})
+			$('#up').click(function(e) {
+				$('#file').click();
+			})
+			//多文件
+			$('#files').on('change',function(){
+				var formData = new FormData(),
+//					url='http://localhost:8084/yjbpoint/file/multiup';
+					url='http://192.168.99.10:8080/ASRAgent/upload?customerId=1111';
+					for (var i=0;i<$('#files')[0].files.length;i++) {
+						formData.append('file',$('#files')[0].files[i] );  
+					}
+				formData.append('projectId', 1);  
+				formData.append('msg', '多文件');  
+		        $.ajax({  
+					url: url,
+		            type: 'POST',  
+		            cache: false,  
+		            data: formData,  
+		            processData: false,  
+		            contentType: false  
+		        }).done(function(res) {
+		        	console.log(res)
+		        }).fail(function(res,txt,err) {
+		        	console.log(err);
+		        });
+			})
+		</script>
+	</body>
+</html>
